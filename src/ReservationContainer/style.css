@@ -1,0 +1,20 @@
+.parallaxRes {
+    background-image: url(../images/stormtrooper-bartender-bg.png);
+    background-repeat:  no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 50%;
+    padding-bottom: 100px;
+}
+
+.sub-content-res {
+    background: black;
+    color: white;
+    height: 1000px;
+}
+
+.res-list-item {
+    color: black;
+    text-align: left;
+}

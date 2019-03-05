@@ -1,0 +1,32 @@
+.navbar-link{
+    background: black !important;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    color: white !important;
+}
+
+.navbar-brand-link{
+    background: black;
+    color: white !important;
+}
+
+.navbar-link:hover{
+    background: white !important;
+    color: black !important;
+}
+
+.navbar-main{
+    background-attachment: fixed;
+    background-position: center;
+    background-color: black;
+    color: white !important;
+}
+
+.navbar-drop{
+    background: black !important;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    color: white !important;
+}

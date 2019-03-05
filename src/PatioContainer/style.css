@@ -1,0 +1,37 @@
+.patioParallax {
+    background-image: url(../images/clouds.jpg);
+    background-repeat:  no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 50%;
+}
+
+svg {
+    height: 200px;
+    width: 200px;
+    fill: red;
+}
+
+.svgMoon {
+    fill: greenyellow;
+    stroke: green;
+}
+
+.card {
+    width: 350px;
+    display: block;
+    float: left;
+}
+
+.patio-div {
+    text-align: center;
+}
+
+.sub-content-patio {
+    display: flex;
+    background: black;
+    color: white;
+    height: 1000px;
+    flex: 0 1 auto;
+}
