@@ -18,7 +18,6 @@ class AdminLoginContainer extends Component {
     }
 
     showModalCreate = () => {
-        console.log('showing create new user');
         this.setState({
             showModalCreate: true,
             showError11000: false,
@@ -45,7 +44,6 @@ class AdminLoginContainer extends Component {
 
     checkLogin = async (e) => {
         e.preventDefault();
-        console.log('checking credentials...');
         const loginResponse = await fetch(process.env.REACT_APP_BACKEND + `auth/login`, {
             method: "POST",
             body: JSON.stringify(this.state.credentials),
@@ -58,7 +56,6 @@ class AdminLoginContainer extends Component {
             throw Error(loginResponse.statusText);
         }
         const parsedResponse = await loginResponse.json();
-        console.log(parsedResponse);
         if(parsedResponse.status === 401){
             this.setState({
                 showError401: true,
@@ -90,7 +87,6 @@ class AdminLoginContainer extends Component {
             }
 
             const parsedResponse = await newAdminResponse.json();
-            console.log(parsedResponse);
             if(parsedResponse.status === 11000){
                 this.setState({
                     showError11000: true,
@@ -108,8 +104,6 @@ class AdminLoginContainer extends Component {
     }
 
     render() {
-        console.log("this is logged prop", this.props.logged);
-        console.log(this.state);
         return(
             <div>
                 <h1> Dis where you login</h1>

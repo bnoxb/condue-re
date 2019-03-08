@@ -8,6 +8,7 @@ import {
     Button
 } from 'reactstrap';
 import './style.css';
+import AdminResContainer from './AdminResContainer/AdminResContainer';
 
 
 class ReservationContainer extends Component {
@@ -122,24 +123,28 @@ class ReservationContainer extends Component {
                                 <Col sm="3" md="2"></Col>
                                 <Col xs="12" sm="6" md="8">
                                 <br/><br/>
-                                    <h1>Reservations</h1>
-                                    {this.state.showError11000 ? <h1>Please Enter a Different Name</h1> : null }
-                                    <div className="splash-span">
-                                        <Button className="splash-btn" onClick={this.showCreateModal}>Make Reservation</Button>
-                                        <Button className="splash-btn" onClick={this.showResList}>View Your Reservations</Button>
-                                        {this.state.showResList ? <EditResContainer 
-                                                                        reses={this.state.reses} 
-                                                                        handleDeleteRes={this.handleDeleteRes} 
-                                                                        resName={this.state.resName} 
-                                                                    /> : null}
-                                        {this.state.showCreateModal ? <CreateReservation 
-                                                                        addRes={this.addRes} 
-                                                                        targetDate={this.props.targetDate}
-                                                                        showCreateModal={this.state.showCreateModal}
-                                                                        handleCancelModal={this.handleCancelModal}
-                                                                    /> : null}
-                                    </div>
-                                
+                                {this.props.logged ?  <AdminResContainer /> 
+                                                    : 
+                                                    <div>
+                                                        <h1>Reservations</h1>
+                                                        {this.state.showError11000 ? <h1>Please Enter a Different Name</h1> : null }
+                                                        <div className="splash-span">
+                                                            <Button className="splash-btn" onClick={this.showCreateModal}>Make Reservation</Button>
+                                                            <Button className="splash-btn" onClick={this.showResList}>View Your Reservations</Button>
+                                                            {this.state.showResList ? <EditResContainer 
+                                                                                            reses={this.state.reses} 
+                                                                                            handleDeleteRes={this.handleDeleteRes} 
+                                                                                            resName={this.state.resName} 
+                                                                                        /> : null}
+                                                            {this.state.showCreateModal ? <CreateReservation 
+                                                                                            addRes={this.addRes} 
+                                                                                            targetDate={this.props.targetDate}
+                                                                                            showCreateModal={this.state.showCreateModal}
+                                                                                            handleCancelModal={this.handleCancelModal}
+                                                                                        /> : null}
+                                                        </div>
+                                                    </div>
+                                }
                                 </Col>
                                 <Col sm="3" md="2"></Col>
                             </Row>

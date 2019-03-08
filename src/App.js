@@ -49,7 +49,6 @@ class App extends Component {
   }
 
   setTargetDate = (date) => {
-    console.log('setting target date to: ', date);
     this.setState({
       targetDate: date,
       passTargetDate: true,
@@ -69,13 +68,14 @@ class App extends Component {
   }
 
   render(){
+    console.log(this.state);
     return(
       <main>
-        <Header />
+        <Header logged={this.state.logged} logOut={this.logOut}/>
         <Switch>
           <Route exact path="/" component={ SplashPage } />
           <Route exact path="/menu" component={ Menu } />
-          <Route exact path="/reservation" render={(props) => <ReservationContainer {...props} targetDate={this.state.targetDate} passTargetDate={this.state.passTargetDate} /> }/>
+          <Route exact path="/reservation" render={(props) => <ReservationContainer {...props} targetDate={this.state.targetDate} passTargetDate={this.state.passTargetDate} logged={this.state.logged}/> }/>
           <Route exact path="/reservation/create" render={(props) => <CreateReservation {...props} targetDate={this.state.targetDate} />} />
           <Route exact path='/patio' render={(props) => <PatioContainer {...props} setTargetDate={this.setTargetDate} /> }/>
           <Route exact path='/about' component={ About }/>

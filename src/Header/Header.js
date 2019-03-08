@@ -51,6 +51,11 @@ class Header extends Component {
                             <NavItem>
                                 <NavLink className="navbar-link" tag={Link} to="/about">About</NavLink>
                             </NavItem>
+                            {this.props.logged ? 
+                                <NavItem>
+                                    <NavLink className="navbar-link" tag={Link} to="/" onClick={this.props.logOut}>LoqOut</NavLink>
+                                </NavItem>
+                            : null }
                             <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle className="navbar-link" nav caret>
                                 Options

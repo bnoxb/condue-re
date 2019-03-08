@@ -42,7 +42,6 @@ class EditResContainer extends Component {
     }
 
     handleName = async () => {
-        console.log('in handleName');
         await this.setState({
             guestName: this.props.resName,
         })
@@ -50,9 +49,7 @@ class EditResContainer extends Component {
     }
 
     canEdit = async () => {
-        console.log('in can edit');
         const myRes = this.props.reses.filter((res) => res.name === this.state.guestName);
-        console.log(myRes);
         if(myRes.length > 0) {
             await this.setState({
                 needRes: false,
@@ -68,8 +65,6 @@ class EditResContainer extends Component {
     }
 
     handleEditFormInput = async (resEditing, e) => {
-        console.log('this is the resEditing', resEditing);
-        console.log('this is the resToEdit', this.state.resToEdit);
         await this.setState({
             resToEdit: {
                 ...resEditing,
@@ -144,7 +139,6 @@ class EditResContainer extends Component {
     }
 
     render(){
-        console.log(this.state, " my state in EditResContainer");
         const editList = this.state.myReses.map((res, i)=> {
             return(
                 <div key={i}>
