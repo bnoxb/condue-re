@@ -58,7 +58,6 @@ class CreateReservation extends Component {
     }
 
     hideModal = async (e) => {
-        console.log('hide modal')
         await this.setState({
             showModal: !this.state.showModal,
         })

@@ -24,13 +24,19 @@ class App extends Component {
     super();
 
     this.state = {
-      logged: false,
+      logged: true,
       targetDate: '',
       passTargetDate: false,
     }
   }
 
   componentDidMount = async () => {
+
+    // THIS LOGS IN IMMIDIATELY FOR TESTING CHANGE!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
+    this.setState({
+      logged: true
+    });
+    // CHANGE THIS PART!!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     const loggedResponse = await fetch(process.env.REACT_APP_BACKEND + 'auth');
     if(!loggedResponse.ok){
       throw Error(loggedResponse.statusText);

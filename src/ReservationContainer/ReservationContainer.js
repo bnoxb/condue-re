@@ -21,6 +21,8 @@ class ReservationContainer extends Component {
             showCreateModal: false,
             showResList: false,
             showError11000: false,
+            // REMOVE TESTING AFTER TESTING
+            testing:true
         }
     }
     
@@ -41,6 +43,7 @@ class ReservationContainer extends Component {
                 throw Error(response.statusText);
             }
             const parsedResponse = await response.json();
+            console.log(parsedResponse.data);
             this.setState({
                 reses: parsedResponse.data
             })
@@ -114,41 +117,43 @@ class ReservationContainer extends Component {
             })
     }
     render(){
+        console.log(this.state.reses, "is teh reses");
         return(
             <div>
                 <div className="parallaxRes">
                     <div className="splash-content">
+                    {/* CHANGE THIS BACK TO this.props.logged AFTER TESTING */}
+                    {this.state.testing ?
+                        <AdminResContainer reses={this.state.reses} getRes={this.getRes}/> :
                         <Container>
                             <Row className="splash-row">
                                 <Col sm="3" md="2"></Col>
                                 <Col xs="12" sm="6" md="8">
-                                <br/><br/>
-                                {this.props.logged ?  <AdminResContainer /> 
-                                                    : 
-                                                    <div>
-                                                        <h1>Reservations</h1>
-                                                        {this.state.showError11000 ? <h1>Please Enter a Different Name</h1> : null }
-                                                        <div className="splash-span">
-                                                            <Button className="splash-btn" onClick={this.showCreateModal}>Make Reservation</Button>
-                                                            <Button className="splash-btn" onClick={this.showResList}>View Your Reservations</Button>
-                                                            {this.state.showResList ? <EditResContainer 
-                                                                                            reses={this.state.reses} 
-                                                                                            handleDeleteRes={this.handleDeleteRes} 
-                                                                                            resName={this.state.resName} 
-                                                                                        /> : null}
-                                                            {this.state.showCreateModal ? <CreateReservation 
-                                                                                            addRes={this.addRes} 
-                                                                                            targetDate={this.props.targetDate}
-                                                                                            showCreateModal={this.state.showCreateModal}
-                                                                                            handleCancelModal={this.handleCancelModal}
-                                                                                        /> : null}
-                                                        </div>
-                                                    </div>
-                                }
+                                <br/><br/>          
+                                    <div>
+                                        <h1>Reservations</h1>
+                                        {this.state.showError11000 ? <h1>Please Enter a Different Name</h1> : null }
+                                        <div className="splash-span">
+                                            <Button className="splash-btn" onClick={this.showCreateModal}>Make Reservation</Button>
+                                            <Button className="splash-btn" onClick={this.showResList}>View Your Reservations</Button>
+                                            {this.state.showResList ? <EditResContainer 
+                                                                            reses={this.state.reses} 
+                                                                            handleDeleteRes={this.handleDeleteRes} 
+                                                                            resName={this.state.resName} 
+                                                                        /> : null}
+                                            {this.state.showCreateModal ? <CreateReservation 
+                                                                            addRes={this.addRes} 
+                                                                            targetDate={this.props.targetDate}
+                                                                            showCreateModal={this.state.showCreateModal}
+                                                                            handleCancelModal={this.handleCancelModal}
+                                                                        /> : null}
+                                        </div>
+                                    </div>
                                 </Col>
                                 <Col sm="3" md="2"></Col>
                             </Row>
                         </Container>
+                    }
                     </div>
                 </div>
                 <div className="sub-content-res"></div>
