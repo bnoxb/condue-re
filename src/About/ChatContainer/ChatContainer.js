@@ -14,6 +14,7 @@ class ChatContainer extends Component {
         }
     }
     componentDidMount(){
+        //this.scrollToBottom(); Don't Think I need this >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         database.ref('messages').on('value', (snapshot)=>{
             const updatedMessages = [];
             snapshot.forEach(childSnapshot=>{
@@ -28,6 +29,10 @@ class ChatContainer extends Component {
                 messages: updatedMessages,
             });
         });
+    }
+
+    componentDidUpdate() {
+        this.scrollToBottom();
     }
 
     handleInput = (e) => {
@@ -52,6 +57,10 @@ class ChatContainer extends Component {
         }
     }
 
+    scrollToBottom(){
+        this.messagesEnd.scrollIntoView({ behavior: "auto" });
+    }
+
     render(){
         
         const messagesList = this.state.messages.map((message, i) => {
@@ -66,6 +75,10 @@ class ChatContainer extends Component {
                 <Container className="chat-msgbox">
                     <Container className="chat-msgs">
                         {messagesList}
+                        {/* this is the div target to move the scrollbar to the bottom every time */}
+                        <div style={{ float:"left", clear: "both" }}
+                                ref={(el) => { this.messagesEnd = el; }}>
+                        </div>
                     </Container>
                 </Container>
                 <form onSubmit={this.handleSubmit}>
