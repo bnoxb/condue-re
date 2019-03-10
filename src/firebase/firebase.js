@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 
 var config = {
-    apiKey: "AIzaSyC-YE6n2WEBnrkPcZWA7aHeg_xqh9J3eLU",
+    apiKey: process.env.REACT_APP_FIREBASE_KEY,
     authDomain: "condue-re.firebaseapp.com",
     databaseURL: "https://condue-re.firebaseio.com",
     projectId: "condue-re",
