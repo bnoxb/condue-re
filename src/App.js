@@ -74,7 +74,6 @@ class App extends Component {
   }
 
   render(){
-    console.log(this.state);
     return(
       <main>
         <Header logged={this.state.logged} logOut={this.logOut}/>

@@ -22,7 +22,7 @@ class ReservationContainer extends Component {
             showResList: false,
             showError11000: false,
             // REMOVE TESTING AFTER TESTING
-            testing:true
+            // testing:true
         }
     }
     
@@ -117,13 +117,12 @@ class ReservationContainer extends Component {
             })
     }
     render(){
-        console.log(this.state.reses, "is teh reses");
         return(
             <div>
                 <div className="parallaxRes">
                     <div className="splash-content">
                     {/* CHANGE THIS BACK TO this.props.logged AFTER TESTING */}
-                    {this.state.testing ?
+                    {this.props.logged ?
                         <AdminResContainer reses={this.state.reses} getRes={this.getRes}/> :
                         <Container>
                             <Row className="splash-row">

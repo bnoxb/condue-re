@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import dateFns from "date-fns";
-import { Modal, ModalBody, ModalHeader, Button } from 'reactstrap';
+import { Modal, ModalBody, ModalHeader, Button, ListGroup, ListGroupItem} from 'reactstrap';
 
 
 class ResListForDay extends Component {
@@ -35,22 +35,21 @@ class ResListForDay extends Component {
         const dateFormat = "dddd, MMMM Do"
         const resList = this.props.resesForDay.map((res, i)=> {
             return (
-                <li key={i}>
-                    <h1>Name: {res.name}</h1>
-                    <p>Date: {dateFns.format(res.date, dateFormat)}</p>
-                    <p>Time: {res.time}</p><button onClick={this.handleAccept.bind(null, res)}>Accept</button>
-                    <button onClick={this.hideModal}>Close</button>
-                </li>
+                <ListGroupItem className="modal-list-item" key={i}>
+                    <h4>{res.name} ~ {res.numGuests} guests ~  {res.time}</h4>
+                    <Button className="accept-button" onClick={this.handleAccept.bind(null, res)}>Accept</Button>
+                </ListGroupItem>
             )
         });
         return(
             <Modal isOpen={this.state.showModal} className="modal-reslist">
-                <ModalHeader>Pending Reservations</ModalHeader>
-                <ModalBody>
-                    <ul>
+                <ModalHeader className="modal-body-reslist modal-header">Pending Reservations ~ {dateFns.format(this.props.selectedDate, dateFormat)}</ModalHeader>
+                <ModalBody className="modal-body-reslist">
+                    <ListGroup>
                         {resList}
-                    </ul>
+                    </ListGroup>
                 </ModalBody>
+                <Button onClick={this.hideModal}>Close</Button>
             </Modal>
         )
     }

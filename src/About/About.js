@@ -1,4 +1,5 @@
 import React from 'react';
+import ChatContainer from './ChatContainer/ChatContainer';
 
 const About = (props) => {
     return(
@@ -7,6 +8,7 @@ const About = (props) => {
             <h2>Where we get our ingredients?</h2>
             <p>King Soopers</p><br/>
             <h1>Nutrition Facts:</h1>
+            <ChatContainer />
         </div>
     )
 }

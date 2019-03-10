@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import dateFns from "date-fns";
 import './style.css';
-import { timingSafeEqual } from "crypto";
 import ResListForDay from "./ResListForDay/ResListForDay";
 
 class Calendar extends Component {
@@ -16,7 +15,6 @@ class Calendar extends Component {
     };
 
     componentDidMount() {
-        console.log(this.props, " is the props");
         this.props.getRes();
     }
 
@@ -153,13 +151,12 @@ class Calendar extends Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <div className="calendar">
                 {this.renderHeader()}
                 {this.renderDays()}
                 {this.renderCells()}
-                {this.state.showModalDay ? <ResListForDay acceptRes={this.acceptRes} showModalDay={this.state.showModalDay} resesForDay={this.state.resesForDay} closeModal={this.closeModal} /> : null}
+                {this.state.showModalDay ? <ResListForDay acceptRes={this.acceptRes} showModalDay={this.state.showModalDay} selectedDate={this.state.selectedDate} resesForDay={this.state.resesForDay} closeModal={this.closeModal} /> : null}
             </div>
         );
     }

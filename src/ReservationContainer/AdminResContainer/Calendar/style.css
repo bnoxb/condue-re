@@ -237,7 +237,6 @@ main {
 }
 
 
-
 .calendar .body .cell:hover .bg, .calendar .body .selected .bg  {
   opacity: 0.2;
   transition: .5s ease-in;
@@ -247,4 +246,22 @@ main {
   flex-grow: 0;
   flex-basis: calc(100%/7);
   width: calc(100%/7);
+}
+
+.modal-reslist {
+  border:1px solid black;
+}
+
+.modal-header{
+  color: white;
+}
+
+.modal-body-reslist {
+  background-image:linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%);
+  /* opacity:.5; */
+  justify-content: center;
+}
+
+.modal-list-item{
+  justify-content: center;
 }

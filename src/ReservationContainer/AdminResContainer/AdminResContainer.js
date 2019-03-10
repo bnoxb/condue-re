@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import Calendar from './Calendar/Calender';
+import Calendar from './Calendar/Calendar';
 import { 
     Container,
     Row,
     Col,
-    Button
 } from 'reactstrap';
 import "./style.css";
 
