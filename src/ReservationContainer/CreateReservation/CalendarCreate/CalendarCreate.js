@@ -1,22 +1,13 @@
-import React, { Component } from "react";
-import dateFns from "date-fns";
-import './style.css';
-import ResListForDay from "./ResListForDay/ResListForDay";
+import React, { Component } from 'react';
+import dateFns from 'date-fns';
 
-class Calendar extends Component {
+class CalendarCreate extends Component {
     constructor(){
-        super()
+        super();
         this.state = {
             currentMonth: new Date(),
             selectedDate: new Date(),
-            showModalDay: false,
-            resesForDay: [],
-            isPastDayCount: 0,
         }
-    };
-
-    componentDidMount() {
-        this.props.getRes();
     }
 
     renderHeader = () => {
@@ -71,42 +62,29 @@ class Calendar extends Component {
         }
     }
 
-    checkHasRes = (day) => {
-        for(let k = 0; k < this.props.reses.length; k++){
-            if(dateFns.isSameDay(day, this.props.reses[k].date)){
-                return true;
-            }
-        }
-    }
-
-    dayRenderClasses = (day, monthStart, formattedDate, hasRes) => {
+    dayRenderClasses = (day, monthStart, formattedDate) => {
         const cloneDay = day;   
         return(
             <div 
-                    className={`col cell ${
-                        dateFns.isSameDay(day, new Date())
-                            ? ""
-                            : dateFns.isPast(day, monthStart)
-                                ? "disabled"
-                                : ""
-                    }
-                    ${
-                        dateFns.isSameDay(day, this.state.selectedDate)  
-                            ? "selected" 
+                className={`col cell ${
+                    dateFns.isSameDay(day, new Date())
+                        ? ""
+                        : dateFns.isPast(day, monthStart)
+                            ? "disabled"
                             : ""
-                    } ${
-                        hasRes
-                                ? "has-res"
-                                : ""
-                    }`}
-                    
-                    key={day}
-                    onClick={(e)=> this.onDateClick(dateFns.parse(cloneDay), e)}>
-                        <span className="number">{formattedDate}</span>
-                        <span className="bg">{formattedDate}</span>
-                    </div>
+                }
+                ${
+                    dateFns.isSameDay(day, this.state.selectedDate)  
+                        ? "selected" 
+                        : ""
+                }`}
+                
+                key={day}
+                onClick={(e)=> this.onDateClick(dateFns.parse(cloneDay), e)}>
+                    <span className="number">{formattedDate}</span>
+                    <span className="bg">{formattedDate}</span>
+                </div>
         )
-
     }
 
     renderCells = () => {
@@ -124,8 +102,7 @@ class Calendar extends Component {
                 if(dateFns.isPast(day, monthStart)){
                     oldWeekCounter++;
                 }
-                const hasRes = this.checkHasRes(day);
-                const theDay = this.dayRenderClasses(day, monthStart, formattedDate, hasRes);
+                const theDay = this.dayRenderClasses(day, monthStart, formattedDate);
 
                 days.push(theDay);
                 day = dateFns.addDays(day, 1);
@@ -143,27 +120,9 @@ class Calendar extends Component {
         return <div className="body">{rows}</div>
     }
 
-    onDateClick = async (day, e) => {
-        if(e.currentTarget.classList.contains('has-res')){
-            const tempRes = [];
-            for(let i = 0; i < this.props.reses.length; i++){
-                if(dateFns.isSameDay(day, this.props.reses[i].date)){
-                    tempRes.push(this.props.reses[i]);
-                }
-            }
-            await this.setState({
-                resesForDay: tempRes,
-                showModalDay: true,
-            })
-        }
+    onDateClick = (day) => {
         this.setState({
             selectedDate: day
-        });
-    };
-
-    closeModal = () => {
-        this.setState({
-            showModalDay: false,
         })
     }
 
@@ -179,20 +138,15 @@ class Calendar extends Component {
         });
     };
 
-    acceptRes = (res) => {
-        console.log('ACCEPTED THE RES!! for: ', res);
-    }
-
-    render() {
-        return (
+    render(){
+        return(
             <div className="calendar">
                 {this.renderHeader()}
                 {this.renderDays()}
                 {this.renderCells()}
-                {this.state.showModalDay ? <ResListForDay acceptRes={this.acceptRes} showModalDay={this.state.showModalDay} selectedDate={this.state.selectedDate} resesForDay={this.state.resesForDay} closeModal={this.closeModal} /> : null}
             </div>
-        );
+        )
     }
 }
 
-export default Calendar;
+export default CalendarCreate;

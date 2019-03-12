@@ -62,10 +62,10 @@ class AdminLoginContainer extends Component {
             })
         }
         if(parsedResponse.status === 200){
-            this.setState({
+            await this.setState({
                 showError401: false,
             })
-            this.props.logIn();
+            await this.props.logIn();
             this.props.history.push('/');
         }
     }

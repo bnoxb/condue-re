@@ -3,11 +3,12 @@ import 'firebase/database';
 
 var config = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
-    authDomain: "condue-re.firebaseapp.com",
-    databaseURL: "https://condue-re.firebaseio.com",
-    projectId: "condue-re",
-    storageBucket: "condue-re.appspot.com",
-    messagingSenderId: "256143981552"
+    authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+    databaseURL:process.env.REACT_APP_FIREBASE_DATABASE_URL,
+    // || "https://condue-re.firebaseio.com",
+    projectId: process.env.REACT_APP_FIREBASE_PID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_SID
 };
 
 firebase.initializeApp(config);

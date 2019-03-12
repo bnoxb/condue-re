@@ -9,6 +9,7 @@ import {
 } from 'reactstrap';
 import './style.css';
 import AdminResContainer from './AdminResContainer/AdminResContainer';
+import CalendarCreate from './CreateReservation/CalendarCreate/CalendarCreate';
 
 
 class ReservationContainer extends Component {
@@ -43,7 +44,6 @@ class ReservationContainer extends Component {
                 throw Error(response.statusText);
             }
             const parsedResponse = await response.json();
-            console.log(parsedResponse.data);
             this.setState({
                 reses: parsedResponse.data
             })
@@ -146,6 +146,7 @@ class ReservationContainer extends Component {
                                                                             showCreateModal={this.state.showCreateModal}
                                                                             handleCancelModal={this.handleCancelModal}
                                                                         /> : null}
+                                            <CalendarCreate />
                                         </div>
                                     </div>
                                 </Col>
