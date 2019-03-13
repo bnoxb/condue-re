@@ -21,6 +21,8 @@ class Header extends Component {
 
         this.state = {
             isOpen: false,
+            oauthURL: process.env.REACT_APP_BACKEND + "auth/google",
+            oauthOutURL: process.env.REACT_APP_BACKEND + "logout"
         }
     }
     toggle() {
@@ -53,9 +55,20 @@ class Header extends Component {
                             </NavItem>
                             {this.props.logged ? 
                                 <NavItem>
-                                    <NavLink className="navbar-link" tag={Link} to="/" onClick={this.props.logOut}>LoqOut</NavLink>
+                                    <NavLink className="navbar-link" tag={Link} to="/" onClick={this.props.logOut}>LogOut</NavLink>
                                 </NavItem>
-                            : null }
+                            : 
+                                null
+                            }
+                            {this.props.userLogged ? 
+                                <NavItem>
+                                    <NavLink className="navbar-link" href={this.state.oauthOutURL} >Logout</NavLink>
+                                </NavItem>
+                            :
+                                <NavItem>
+                                    <NavLink className="navbar-link" href={this.state.oauthURL} >Login</NavLink>
+                                </NavItem>
+                            }
                             <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle className="navbar-link" nav caret>
                                 Options

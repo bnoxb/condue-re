@@ -10,6 +10,8 @@ import About from './About/About';
 import ReviewContainer from './ReviewContainer/ReviewContainer';
 import AdminLoginContainer from './AdminLoginContainer/AdminLoginContainer';
 import CreateReservation from './ReservationContainer/CreateReservation/CreateReservation';
+import UserLogin from './UserLogin/UserLogin';
+import queryString from 'query-string';
 
 const My404 = () => {
   return(
@@ -24,19 +26,19 @@ class App extends Component {
     super();
 
     this.state = {
-      logged: true,
+      logged: false,
       targetDate: '',
       passTargetDate: false,
+      userLogged: false,
+      user: {
+        name: "",
+        email: "",
+        _id: ""
+      }
     }
   }
 
   componentDidMount = async () => {
-
-    // THIS LOGS IN IMMIDIATELY FOR TESTING CHANGE!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
-    this.setState({
-      logged: true
-    });
-    // CHANGE THIS PART!!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     const loggedResponse = await fetch(process.env.REACT_APP_BACKEND + 'auth');
     if(!loggedResponse.ok){
       throw Error(loggedResponse.statusText);
@@ -73,19 +75,37 @@ class App extends Component {
     })
   }
 
+  componentWillMount= async ()=>{
+    const query = queryString.parse(this.props.location.search);
+    if(query.name) {
+      await this.setState({
+        user: {
+          name: query.name,
+          email: query.email,
+          _id: query._id
+        },
+        userLogged: true
+      });
+      console.log(this.state);
+
+      this.props.history.push('/');
+    }
+  }
+
   render(){
     return(
       <main>
-        <Header logged={this.state.logged} logOut={this.logOut}/>
+        <Header logged={this.state.logged} logOut={this.logOut} userLogged={this.state.userLogged}/>
         <Switch>
           <Route exact path="/" component={ SplashPage } />
           <Route exact path="/menu" component={ Menu } />
-          <Route exact path="/reservation" render={(props) => <ReservationContainer {...props} targetDate={this.state.targetDate} passTargetDate={this.state.passTargetDate} logged={this.state.logged}/> }/>
-          <Route exact path="/reservation/create" render={(props) => <CreateReservation {...props} targetDate={this.state.targetDate} />} />
+          <Route exact path="/reservation" render={(props) => <ReservationContainer {...props} targetDate={this.state.targetDate} passTargetDate={this.state.passTargetDate} logged={this.state.logged} userLogged={this.state.userLogged} user={this.state.user}/> }/>
+          <Route exact path="/reservation/create" render={(props) => <CreateReservation {...props} targetDate={this.state.targetDate} userLogged={this.state.userLogged} user={this.state.user} />} />
           <Route exact path='/patio' render={(props) => <PatioContainer {...props} setTargetDate={this.setTargetDate} /> }/>
           <Route exact path='/about' component={ About }/>
           <Route exact path='/reviews' component={ ReviewContainer }/>
           <Route exact path='/adminlogin' render={(props) => <AdminLoginContainer {...props} logged={this.state.logged} logIn={this.logIn} logOut={this.logOut} />} />
+          <Route exact path='/userlogin' component={ UserLogin } />
           <Route component= { My404 }/>
         </Switch>
       </main>
