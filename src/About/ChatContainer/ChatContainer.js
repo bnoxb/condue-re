@@ -57,7 +57,12 @@ class ChatContainer extends Component {
             console.log(newMsg.key + "sent message: " + newMsg.text);
         }catch(err){
             console.log('Firebase ERROR: ', err);
-        }
+        };
+        this.setState({
+            message:{
+                text: ""
+            }
+        });
     }
 
     scrollToBottom(){
