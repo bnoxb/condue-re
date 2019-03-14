@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Row } from 'reactstrap';
+import { Container, Row, Button, Label, FormGroup, Input, Form } from 'reactstrap';
 import database from '../../firebase/firebase';
-import './style.css';
+import '../style.css';
 class ChatContainer extends Component {
     constructor(){
         super();
@@ -14,7 +14,6 @@ class ChatContainer extends Component {
         }
     }
     componentDidMount(){
-        //this.scrollToBottom(); Don't Think I need this >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         database.ref('messages').on('value', (snapshot)=>{
             const updatedMessages = [];
             snapshot.forEach(childSnapshot=>{
@@ -27,6 +26,10 @@ class ChatContainer extends Component {
             });
             this.setState({
                 messages: updatedMessages,
+                message: {
+                    ...this.state.message,
+                    user: this.props.userName,
+                }
             });
         });
     }
@@ -73,19 +76,20 @@ class ChatContainer extends Component {
         return(
             <Container >
                 <Container className="chat-msgbox">
-                    <Container className="chat-msgs">
+                    <Container >
                         {messagesList}
                         {/* this is the div target to move the scrollbar to the bottom every time */}
                         <div style={{ float:"left", clear: "both" }}
-                                ref={(el) => { this.messagesEnd = el; }}>
+                                ref={(e) => { this.messagesEnd = e; }}>
                         </div>
                     </Container>
                 </Container>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="user" value={this.state.message.user} placeholder="Enter your usename here" onChange={this.handleInput} />
-                    <input type="text" name="text" value={this.state.message.text} placeholder="Enter your message here" onChange={this.handleInput} />
-                    <button type="Submit">Submit</button>
-                </form>
+                <Form onSubmit={this.handleSubmit}>
+                    <FormGroup>
+                        <Input type="text" name="text" value={this.state.message.text} placeholder="Enter your message here" onChange={this.handleInput} />
+                    </FormGroup>
+                    <Button type="Submit">Submit</Button>
+                </Form>
             </Container>
         )
     }

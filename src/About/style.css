@@ -1,0 +1,101 @@
+a:link, a:visited {
+    color: white;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+  }
+
+a:hover, a:active{
+    color: rgb(92, 92, 92) !important;
+    text-decoration: none !important;
+}
+
+.about-head{
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+}
+
+.about-parralax{
+        background-image: url(../images/background-grey.png);
+        background-repeat:  no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        background-size: auto;
+        height: 300px;
+        width: 100%;
+}
+
+.about-overlay{
+    background-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0) 65%, rgba(0,0,0,1) 100%);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: center;
+    padding: 100px;
+    font-size: 2.5rem;
+}
+
+
+.chat-msgbox{
+    height: 250px;
+    width: 500px;
+    background-image: linear-gradient(33deg, rgba(0,0,0,1) 0%, rgba(20,20,20,1) 100%);
+    padding: 10px;
+    overflow: scroll;
+}
+
+.about {
+    background: black;
+    color: white;
+    height: auto;
+}
+
+.about-divider {
+    position: relative;
+    width: 100%;
+    height: 0;
+    left: auto;
+    bottom: 0;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-bottom: 2px solid white;
+}
+
+#bottom.about-divider {
+    margin-bottom: 10rem;
+}
+
+.about-sub-header{
+    align-content: center;
+    padding: 50px 10px 10px 10px;
+}
+
+.about-contact-header{
+    align-content: center;
+    padding: 50px 10px 10px 10px;
+    margin-top: 3rem;
+}
+
+.about-join-chat{
+    align-content: center;
+    text-align: center;
+    padding: 10px 10px 50px 10px;
+}
+
+.fa {
+    padding: 5px;
+    font-size: 18px;
+    text-align: right;
+    text-decoration: none;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    padding-top: 0;
+}
+
+#linkedin:hover, #github:hover {
+    color: rgb(128, 128, 128);
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgb(158, 158, 158);
+  }

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import CreateReservation from './CreateReservation/CreateReservation';
 import dateFns from 'date-fns';
+import { withRouter } from 'react-router-dom';
+import { Modal, ModalBody, ModalHeader, Button } from 'reactstrap';
 
 class CalendarCreate extends Component {
     constructor(){
@@ -7,6 +10,25 @@ class CalendarCreate extends Component {
         this.state = {
             currentMonth: new Date(),
             selectedDate: new Date(),
+            showCreateModal: false,
+            showError: false,
+            res: {
+                name: '',
+                date: '',
+                time: '',
+                numGuests: 1,
+                note: ''
+            },
+        }
+    }
+
+    componentDidMount = () => {
+        
+        if(this.props.showCreateModal){
+            this.setState({
+                showCreateModal: true,
+                selectedDate: new Date(this.props.targetDate),
+            })
         }
     }
 
@@ -122,7 +144,8 @@ class CalendarCreate extends Component {
 
     onDateClick = (day) => {
         this.setState({
-            selectedDate: day
+            selectedDate: day,
+            showCreateModal: true,
         })
     }
 
@@ -138,15 +161,89 @@ class CalendarCreate extends Component {
         });
     };
 
+    handleInput = (e) => {
+        this.setState({
+            res: {
+                ...this.state.res,
+                [e.currentTarget.name]: e.currentTarget.value
+            }
+        })
+    }
+
+    hideModal = async (e) => {
+        await this.setState({
+            showModal: !this.state.showCreateModal,
+        })
+        this.props.handleCancelModal();
+    }
+
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        const dateFormat = "YYYY-MM-DD"
+        if(this.state.res.time === ""){
+            this.setState({
+                showError: true,
+            })
+        } else {
+            await this.setState({
+                showError: false,
+                showModal: !this.state.showModal,
+                res: {
+                    ...this.state.res,
+                    name: this.props.resName,
+                    date: dateFns.format(this.state.selectedDate, dateFormat)
+                }
+            });
+            this.props.addRes(this.state.res);
+        }
+    }
+
+    renderModal = () => {
+        const dateFormat = "dddd, MMMM Do"
+
+        return(
+            <Modal isOpen={this.state.showCreateModal} className="modal-main">
+                <ModalHeader>Make a new Reservation at Condue</ModalHeader>
+                {this.state.showError ? <h1>Must input required fields</h1> : null }
+                <ModalBody>
+                    <div>
+                        <form >
+                            <label>
+                                New Reservation for {this.props.resName} on {dateFns.format(this.state.selectedDate, dateFormat)}
+                            </label><br />
+                            <label>
+                                Enter Time:
+                                <input type="text" name="time" onChange={this.handleInput}/>
+                            </label><br/>
+                            <label>
+                                Enter Number of Guests:
+                                <input type="number" name="numGuests" value={this.state.res.numGuests} onChange={this.handleInput}/>
+                            </label><br/>
+                            <label>
+                                Additional Notes:
+                                <input type="text" name="note" onChange={this.handleInput}/>
+                            </label><br/>
+                            <Button onClick={this.handleSubmit}>Submit</Button>
+                            <Button color="secondary" onClick={this.hideModal}>Cancel</Button>
+                        </form>
+                    </div>
+                </ModalBody>
+            </Modal> 
+        )
+    }
+
     render(){
         return(
             <div className="calendar">
                 {this.renderHeader()}
                 {this.renderDays()}
                 {this.renderCells()}
+                {this.state.showCreateModal ? 
+                    this.renderModal()
+                : null}
             </div>
         )
     }
 }
 
-export default CalendarCreate;
+export default withRouter(CalendarCreate);

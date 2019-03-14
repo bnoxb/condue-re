@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CreateReservation from './CreateReservation/CreateReservation';
 import EditResContainer from './EditResContainer/EditResContainer';
 import { 
     Container,
@@ -9,7 +8,7 @@ import {
 } from 'reactstrap';
 import './style.css';
 import AdminResContainer from './AdminResContainer/AdminResContainer';
-import CalendarCreate from './CreateReservation/CalendarCreate/CalendarCreate';
+import CalendarCreate from './CalendarCreate/CalendarCreate';
 
 
 class ReservationContainer extends Component {
@@ -22,12 +21,19 @@ class ReservationContainer extends Component {
             showCreateModal: false,
             showResList: false,
             showError11000: false,
+            showNotLogged: true,
             // REMOVE TESTING AFTER TESTING
             // testing:true
         }
     }
     
     componentDidMount=()=>{
+        if(this.props.userLogged){
+            this.setState({
+                resName: this.props.user.name,
+                showNotLogged: false,
+            })
+        }
         this.getRes();
         if(this.props.passTargetDate){
             this.setState({
@@ -53,6 +59,7 @@ class ReservationContainer extends Component {
     }
 
     addRes = async (res) => {
+        console.log('in the add res with:', res);
         try{
             const resResponse = await fetch((process.env.REACT_APP_BACKEND + 'api/v1/reservations'), {
                 method: 'POST',
@@ -89,11 +96,17 @@ class ReservationContainer extends Component {
         }
     }
 
-    showCreateModal = async () => {
-        await this.setState({
-            showCreateModal: true,
-            showResList: false,
-        })
+    showCreateModal = () => {
+        if(this.props.userLogged){
+            this.setState({
+                showCreateModal: true,
+                showResList: false,
+            })
+        } else {
+            this.setState({
+                showNotLogged: true,
+            })
+        }
     }
 
     showResList = () => {
@@ -117,6 +130,7 @@ class ReservationContainer extends Component {
             })
     }
     render(){
+
         return(
             <div>
                 <div className="parallaxRes">
@@ -140,13 +154,10 @@ class ReservationContainer extends Component {
                                                                             handleDeleteRes={this.handleDeleteRes} 
                                                                             resName={this.state.resName} 
                                                                         /> : null}
-                                            {this.state.showCreateModal ? <CreateReservation 
-                                                                            addRes={this.addRes} 
-                                                                            targetDate={this.props.targetDate}
-                                                                            showCreateModal={this.state.showCreateModal}
-                                                                            handleCancelModal={this.handleCancelModal}
-                                                                        /> : null}
-                                            <CalendarCreate />
+                                            {this.state.showCreateModal ? <CalendarCreate resName={this.state.resName} addRes={this.addRes} targetDate={this.props.targetDate} handleCancelModal={this.handleCancelModal} showCreateModal={this.showCreateModal} />
+                                                                        
+                                                                         : null }
+                                            {this.state.showNotLogged ? <h1>You need to Login</h1> : <h1>Welcome {this.state.resName}!</h1>}
                                         </div>
                                     </div>
                                 </Col>

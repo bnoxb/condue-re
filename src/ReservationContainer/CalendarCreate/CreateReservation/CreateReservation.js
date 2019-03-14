@@ -66,7 +66,6 @@ class CreateReservation extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(`what isn't working?`, this.state.res);
         if(this.state.res.name === "" || this.state.res.date === "" || this.state.res.time === "" ){
             this.setState({
                 showError: true,
@@ -75,6 +74,10 @@ class CreateReservation extends Component {
             this.setState({
                 showError: false,
                 showModal: !this.state.showModal,
+                res: {
+                    name: this.props.resName,
+                    date: this.props.selectedDate
+                }
             })
             this.props.addRes(this.state.res);
         }
@@ -90,12 +93,7 @@ class CreateReservation extends Component {
                     <div>
                         <form >
                             <label>
-                                Enter Name:
-                                <input type="text" name="name" onChange={this.handleInput}/>
-                            </label><br />
-                            <label>
-                                Enter Date:
-                                <input type="date" name="date" onChange={this.handleInput} value={this.state.res.date}/>
+                                New Reservation for {this.props.resName} on {this.props.selectedDate}
                             </label><br />
                             <label>
                                 Enter Time:

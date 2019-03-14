@@ -9,7 +9,6 @@ import PatioContainer from './PatioContainer/PatioContainer';
 import About from './About/About';
 import ReviewContainer from './ReviewContainer/ReviewContainer';
 import AdminLoginContainer from './AdminLoginContainer/AdminLoginContainer';
-import CreateReservation from './ReservationContainer/CreateReservation/CreateReservation';
 import UserLogin from './UserLogin/UserLogin';
 import queryString from 'query-string';
 
@@ -100,9 +99,8 @@ class App extends Component {
           <Route exact path="/" component={ SplashPage } />
           <Route exact path="/menu" component={ Menu } />
           <Route exact path="/reservation" render={(props) => <ReservationContainer {...props} targetDate={this.state.targetDate} passTargetDate={this.state.passTargetDate} logged={this.state.logged} userLogged={this.state.userLogged} user={this.state.user}/> }/>
-          <Route exact path="/reservation/create" render={(props) => <CreateReservation {...props} targetDate={this.state.targetDate} userLogged={this.state.userLogged} user={this.state.user} />} />
           <Route exact path='/patio' render={(props) => <PatioContainer {...props} setTargetDate={this.setTargetDate} /> }/>
-          <Route exact path='/about' component={ About }/>
+          <Route exact path='/about' render={(props) => <About {...props} userLogged={this.state.userLogged} userName={this.state.user.name}/> } />
           <Route exact path='/reviews' component={ ReviewContainer }/>
           <Route exact path='/adminlogin' render={(props) => <AdminLoginContainer {...props} logged={this.state.logged} logIn={this.logIn} logOut={this.logOut} />} />
           <Route exact path='/userlogin' component={ UserLogin } />

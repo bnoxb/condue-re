@@ -149,12 +149,8 @@ class EditResContainer extends Component {
         })
         return(
             <div>
-                <h1>Enter Your Name</h1>
+                {this.props.resName ? <h1>{this.props.resName}'s Reservations</h1> : <h1>You must be logged in to do that.</h1>}
                 {this.state.needRes ? <h1>You need to make a reservation</h1> : null}
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="guestName" value={this.state.guestName} onChange={this.handleInput}/>
-                    <input type="Submit"/>
-                </form><br/>
                 {editList}
                 
             </div>
