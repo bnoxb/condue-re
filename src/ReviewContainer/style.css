@@ -1,6 +1,7 @@
 .reviews{
     background-color: rgb(78, 77, 77);
     color: white;
+    background-size: cover;
 }
 
 #review-head{
