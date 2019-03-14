@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SVG from 'react-inlinesvg';
 import '../style.css';
-import { Card, CardText, CardBody, Button } from 'reactstrap';
+import { Card, CardText, CardBody, Button, Alert } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 class PatioCard extends Component {
     constructor(){
@@ -21,9 +21,9 @@ class PatioCard extends Component {
         });
         let patioMsg = '';
         if(this.props.weather.temperatureHigh < 60) {
-            patioMsg = `It's not a patio day homeslice`;
+            patioMsg = `Come and warm up inside with us!`;
         } else {
-            patioMsg = 'Awww YEAHH PATIO DAY BIOTCH';
+            patioMsg = 'Its a perfect day for Patio!';
         }
     
         // an array of an object with keys: the icon message value: icon image source *note these messages are specific to darksky weather api
@@ -71,7 +71,7 @@ class PatioCard extends Component {
         return(
             <div>
     
-                <Card className="card text-center">
+                <Card className="card text-center patio-card">
     
                     <CardBody>
                         <h1>{day}</h1>
@@ -84,15 +84,17 @@ class PatioCard extends Component {
                             className="svgImage"
                         >
                         </SVG>
-                    <CardBody>
+                    <CardBody className="patio-card">
                         <CardText>High of: {this.props.weather.temperatureHigh}</CardText>
                         <CardText>Low of: {this.props.weather.temperatureLow}</CardText>
-                        <CardText><span className="darkSkySpan"><a href="https://darksky.net/poweredby/">Powered By DarkSky</a></span></CardText>
                         <CardText>{patioMsg}</CardText>
-                        <Button onClick={()=>{
-                                this.props.setTargetDate(day);
-                                this.props.history.push('/reservation');
-                            }}>Make Res</Button>
+                        {this.props.userLogged ? <Button onClick={()=>{
+                                                    this.props.setTargetDate(day);
+                                                    this.props.history.push('/reservation');
+                                                }}>Make Res</Button>
+                                                : null }
+                        <CardText><span className="darkSkySpan"><a id="darkSkySpan" href="https://darksky.net/poweredby/">Powered By DarkSky</a></span></CardText>
+
                     </CardBody>
                 </Card>   
             </div>

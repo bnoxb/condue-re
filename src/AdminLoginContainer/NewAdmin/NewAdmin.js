@@ -1,19 +1,19 @@
 import React from 'react';
-
+import { Form, Label, Input, Button } from 'reactstrap';
 const NewAdmin = (props) => {
     return(
         <div>
-            <form onSubmit={props.newAdminSubmit}>
-                <label>
+            <Form onSubmit={props.newAdminSubmit}>
+                <Label>
                     Username:
-                    <input type="text" name="username" onChange={props.handleInput} />
-                </label>
-                <label>
+                    <Input type="text" name="username" onChange={props.handleInput} />
+                </Label>
+                <Label>
                     Password:
-                    <input type="password" name="password" onChange={props.handleInput} />
-                </label>
-                <input type="Submit" />
-            </form>
+                    <Input type="password" name="password" onChange={props.handleInput} />
+                </Label>
+                <Button type="Submit">Submit</Button>
+            </Form>
         </div>
     )
 }

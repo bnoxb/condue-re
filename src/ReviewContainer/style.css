@@ -1,0 +1,28 @@
+.reviews{
+    background-color: rgb(78, 77, 77);
+    color: white;
+}
+
+#review-head{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.reviews-list-item{
+    background-color: rgb(30,30,30) !important;
+    border: solid 2px black !important;
+}
+
+.reviews-sub-head{
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.reviews-modal{
+    background-color: grey;
+    color: black !important;
+}
+
+.modal-content{
+    background-color: grey !important;
+}

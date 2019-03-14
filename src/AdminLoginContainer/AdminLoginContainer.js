@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import AdminLogin from './AdminLogin/AdminLogin';
 import NewAdmin from './NewAdmin/NewAdmin';
+import { Container, Col, Row, Form, Input, FormGroup, Button } from 'reactstrap';
+import "./style.css";
 
 class AdminLoginContainer extends Component {
     constructor(){
@@ -8,6 +10,7 @@ class AdminLoginContainer extends Component {
 
         this.state = {
             showModalCreate: false,
+            showModalLogin: false,
             credentials: {
                 username: '',
                 password: '',
@@ -28,6 +31,7 @@ class AdminLoginContainer extends Component {
     showModalLogin = () => {
         this.setState({
             showModalCreate: false,
+            showModalLogin: true,
             showError11000: false,
             showError401: false,
         })
@@ -105,20 +109,40 @@ class AdminLoginContainer extends Component {
 
     render() {
         return(
-            <div>
-                <h1> Dis where you login</h1>
-                <button onClick={this.showModalCreate}>Signup</button>
-                <button onClick={this.showModalLogin}>Login</button>
-                {this.state.showError11000 ? <h1>Username is taken</h1> : null }
-                {this.state.showError401 ? <h1>Invalid Credentials</h1> : null }
-                {this.state.showModalCreate ?   <NewAdmin 
-                                                    handleInput={this.handleInput} 
-                                                    newAdminSubmit={this.newAdminSubmit} 
-                                                /> : 
-                                                <AdminLogin 
-                                                    handleInput={this.handleInput}
-                                                    checkLogin={this.checkLogin}
-                                                />}
+            <div className="admin">
+                <Container >
+                    <Row>
+                        <Col md="12" style={{textAlign:"center"}}>
+                            <h1>Admin Login</h1>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md="4"></Col>
+                        <Col md="4" style={{textAlign:"center"}}>
+                            <Button className="admin-btn" onClick={this.showModalCreate}>Signup</Button>
+                            <Button className="admin-btn" onClick={this.showModalLogin}>Login</Button>
+                        </Col>
+                        <Col md="4"></Col>
+                    </Row>
+                    <Row>
+                        <Col md="3"></Col>
+                        <Col md="6">
+                            {this.state.showError11000 ? <h1>Username is taken</h1> : null }
+                            {this.state.showError401 ? <h1>Invalid Credentials</h1> : null }
+                            {this.state.showModalCreate ?   <NewAdmin 
+                                                                handleInput={this.handleInput} 
+                                                                newAdminSubmit={this.newAdminSubmit} 
+                                                            /> : this.state.showModalLogin ?
+                                                                <AdminLogin 
+                                                                    handleInput={this.handleInput}
+                                                                    checkLogin={this.checkLogin}
+                                                                />
+                                                                : null }
+                        </Col>
+                        <Col md="3"></Col>
+
+                    </Row>
+                </Container>
             </div>
         )
     }

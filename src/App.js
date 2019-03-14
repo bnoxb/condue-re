@@ -99,9 +99,9 @@ class App extends Component {
           <Route exact path="/" component={ SplashPage } />
           <Route exact path="/menu" component={ Menu } />
           <Route exact path="/reservation" render={(props) => <ReservationContainer {...props} targetDate={this.state.targetDate} passTargetDate={this.state.passTargetDate} logged={this.state.logged} userLogged={this.state.userLogged} user={this.state.user}/> }/>
-          <Route exact path='/patio' render={(props) => <PatioContainer {...props} setTargetDate={this.setTargetDate} /> }/>
+          <Route exact path='/patio' render={(props) => <PatioContainer {...props} setTargetDate={this.setTargetDate} userLogged={this.state.userLogged}/> }/>
           <Route exact path='/about' render={(props) => <About {...props} userLogged={this.state.userLogged} userName={this.state.user.name}/> } />
-          <Route exact path='/reviews' component={ ReviewContainer }/>
+          <Route exact path='/reviews' render={(props) => <ReviewContainer {...props} userLogged={this.state.userLogged} userName={this.state.user.name} /> } />
           <Route exact path='/adminlogin' render={(props) => <AdminLoginContainer {...props} logged={this.state.logged} logIn={this.logIn} logOut={this.logOut} />} />
           <Route exact path='/userlogin' component={ UserLogin } />
           <Route component= { My404 }/>

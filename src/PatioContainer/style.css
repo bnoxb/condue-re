@@ -13,6 +13,8 @@ svg {
     fill: red;
 }
 
+
+
 .svgMoon {
     fill: greenyellow;
     stroke: green;
@@ -24,8 +26,17 @@ svg {
     float: left;
 }
 
+.patio-head{
+    margin-bottom: 3rem;
+    padding-top: 2rem;
+}
+
 .patio-div {
     text-align: center;
+}
+
+.patio-btns{
+    margin-bottom: 2rem;
 }
 
 .sub-content-patio {
@@ -34,4 +45,16 @@ svg {
     color: white;
     height: 1000px;
     flex: 0 1 auto;
+}
+
+a#darkSkySpan {
+    color: black
+}
+
+.card{
+    background-color: grey !important;
+}
+
+.patio-card{
+    background-color: grey;
 }

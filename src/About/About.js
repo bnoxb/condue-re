@@ -72,8 +72,8 @@ class About extends Component {
                             <Col sm="3" md="1"></Col>
                         </Row>
                         <Row>
-                        <div className="about-divider" id="bottom"></div><br/><br/><br/>
-                    </Row>
+                            <div className="about-divider" id="bottom"></div><br/><br/><br/>
+                        </Row>
                     </Container>
                         <Container>
                             <Row>

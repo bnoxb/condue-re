@@ -1,5 +1,5 @@
 .parallaxRes {
-    background-image: url(../images/stormtrooper-bartender-bg.png);
+    background-image: url(../images/background-grey.png);
     background-repeat:  no-repeat;
     background-position: center;
     background-attachment: fixed;
@@ -16,4 +16,8 @@
 .res-list-item {
     color: black;
     text-align: left;
+}
+
+.res-btn-contain{
+    text-align: center;
 }

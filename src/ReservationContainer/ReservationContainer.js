@@ -138,32 +138,50 @@ class ReservationContainer extends Component {
                     {/* CHANGE THIS BACK TO this.props.logged AFTER TESTING */}
                     {this.props.logged ?
                         <AdminResContainer reses={this.state.reses} getRes={this.getRes}/> :
-                        <Container>
-                            <Row className="splash-row">
-                                <Col sm="3" md="2"></Col>
-                                <Col xs="12" sm="6" md="8">
-                                <br/><br/>          
-                                    <div>
-                                        <h1>Reservations</h1>
-                                        {this.state.showError11000 ? <h1>Please Enter a Different Name</h1> : null }
-                                        <div className="splash-span">
+                            <div>
+                                <Container>
+                                    <Row>
+                                        <Col md="12" style={{textAlign:"center", marginTop:"3rem", marginBottom:"2rem"}}>
+                                            <h1>Reservations</h1>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col md="3"></Col>
+                                        <Col md="6" style={{textAlign:"center", marginBottom:"3rem"}}>
+                                            {this.state.showNotLogged ? <h3>You need to Login to make a reservation</h3> : <h3>Welcome {this.state.resName}!</h3>}
+                                        </Col>
+                                        <Col md="3"></Col>
+                                    </Row>
+                                    <Row>
+                                        <Col className="res-btn-contain">
                                             <Button className="splash-btn" onClick={this.showCreateModal}>Make Reservation</Button>
                                             <Button className="splash-btn" onClick={this.showResList}>View Your Reservations</Button>
-                                            {this.state.showResList ? <EditResContainer 
-                                                                            reses={this.state.reses} 
-                                                                            handleDeleteRes={this.handleDeleteRes} 
-                                                                            resName={this.state.resName} 
-                                                                        /> : null}
-                                            {this.state.showCreateModal ? <CalendarCreate resName={this.state.resName} addRes={this.addRes} targetDate={this.props.targetDate} handleCancelModal={this.handleCancelModal} showCreateModal={this.showCreateModal} />
-                                                                        
-                                                                         : null }
-                                            {this.state.showNotLogged ? <h1>You need to Login</h1> : <h1>Welcome {this.state.resName}!</h1>}
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col sm="3" md="2"></Col>
-                            </Row>
-                        </Container>
+                                        </Col>
+                                    </Row>
+                                </Container>
+                                <Container>
+                                    <Row className="splash-row">
+                                        <Col sm="3" md="2"></Col>
+                                        <Col xs="12" sm="6" md="8">
+                                        <br/><br/>          
+                                            <div>
+                                                {this.state.showError11000 ? <h1>Please Enter a Different Name</h1> : null }
+                                                <div className="splash-span">
+                                                    {this.state.showResList ? <EditResContainer 
+                                                                                    reses={this.state.reses} 
+                                                                                    handleDeleteRes={this.handleDeleteRes} 
+                                                                                    resName={this.state.resName} 
+                                                                                /> : null}
+                                                    {this.state.showCreateModal ? <CalendarCreate resName={this.state.resName} addRes={this.addRes} targetDate={this.props.targetDate} handleCancelModal={this.handleCancelModal} showCreateModal={this.showCreateModal} />
+                                                                                
+                                                                                : null }
+                                                </div>
+                                            </div>
+                                        </Col>
+                                        <Col sm="3" md="2"></Col>
+                                    </Row>
+                                </Container>
+                            </div>
                     }
                     </div>
                 </div>

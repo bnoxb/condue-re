@@ -55,7 +55,7 @@ class Header extends Component {
                             </NavItem>
                             {this.props.logged ? 
                                 <NavItem>
-                                    <NavLink className="navbar-link" tag={Link} to="/" onClick={this.props.logOut}>LogOut</NavLink>
+                                    <NavLink className="navbar-link" tag={Link} to="/" onClick={this.props.logOut}>Admin LogOut</NavLink>
                                 </NavItem>
                             : 
                                 null
@@ -78,9 +78,9 @@ class Header extends Component {
                                         Review Us
                                     </DropdownItem>
     
-                                    <DropdownItem className="navbar-drop">
+                                    {/* <DropdownItem className="navbar-drop">
                                         Find Us
-                                    </DropdownItem>
+                                    </DropdownItem> */}
     
                                     <DropdownItem className="navbar-drop" divider />
     
