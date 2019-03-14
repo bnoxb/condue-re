@@ -150,9 +150,10 @@ class EditResContainer extends Component {
         return(
             <div>
                 {this.props.resName ? <h1>{this.props.resName}'s Reservations</h1> : <h1>You must be logged in to do that.</h1>}
+                <br/>
                 {this.state.needRes ? <h1>You need to make a reservation</h1> : null}
+                <br/>
                 {editList}
-                
             </div>
         )
     }

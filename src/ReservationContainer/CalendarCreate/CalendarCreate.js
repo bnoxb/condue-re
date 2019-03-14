@@ -24,7 +24,7 @@ class CalendarCreate extends Component {
 
     componentDidMount = () => {
         
-        if(this.props.showCreateModal){
+        if(this.props.showCreateModal && this.props.targetDate){
             this.setState({
                 showCreateModal: true,
                 selectedDate: new Date(this.props.targetDate),

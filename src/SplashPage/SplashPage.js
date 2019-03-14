@@ -22,7 +22,7 @@ const SplashPage = () => {
                             <Col sm="3" md="2"></Col>
                             <Col xs="12" sm="6" md="8">
                             <br/><br/>
-                                <h1>Welcome to Condue!!</h1>
+                                <h1>Welcome to Condue</h1><br/>
                                 <div className="splash-span">
                                     <p> We are a seasonal restaurant working to build bridges through great food, live 
                                         music and good old-fashioned fun.</p>
