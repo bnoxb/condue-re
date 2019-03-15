@@ -60,6 +60,7 @@ class ChatContainer extends Component {
         };
         this.setState({
             message:{
+                ...this.state.message,
                 text: ""
             }
         });
