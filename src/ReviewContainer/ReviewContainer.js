@@ -119,7 +119,7 @@ class ReviewContainer extends Component {
                             <Col md="4"></Col>
                     </Row>
                 </Container>
-                <Container>
+                <Container className="reviews-list">
                     <ListGroup>
                         {reviewList}
                     </ListGroup>

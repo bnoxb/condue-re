@@ -11,6 +11,7 @@ import ReviewContainer from './ReviewContainer/ReviewContainer';
 import AdminLoginContainer from './AdminLoginContainer/AdminLoginContainer';
 import UserLogin from './UserLogin/UserLogin';
 import queryString from 'query-string';
+import Footer from './Footer/Footer';
 
 const My404 = () => {
   return(
@@ -106,6 +107,7 @@ class App extends Component {
           <Route exact path='/userlogin' component={ UserLogin } />
           <Route component= { My404 }/>
         </Switch>
+        <Footer />
       </main>
     )
   }

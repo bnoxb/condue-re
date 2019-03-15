@@ -1,7 +1,8 @@
 .reviews{
     background-color: rgb(78, 77, 77);
+    background-size: cover;
     color: white;
-    height: 1000px;
+    height: auto;
 }
 
 #review-head{
@@ -22,6 +23,10 @@
 .reviews-modal{
     background-color: grey;
     color: black !important;
+}
+
+.reviews-list{
+    padding-bottom: 2rem;
 }
 
 .modal-content{

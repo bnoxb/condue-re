@@ -13,13 +13,13 @@ class AdminResContainer extends Component {
             <Container>
                 <Row className="calendar-row">
                     <Col md="12">
-                        <h1>Im Admin Container!</h1>
+                        <h1>Current Reservations</h1>
+                        <p>The days marked with red have reservations that need to be accepted.</p>
                         <Calendar reses={this.props.reses} getRes={this.props.getRes}/>
                     </Col>
                     <Col md="0"></Col>
                 </Row>
             </Container>
-           
         )
     }
 };

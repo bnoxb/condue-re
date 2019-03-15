@@ -121,27 +121,8 @@ class About extends Component {
                                 ?   <ChatContainer userName={this.props.userName}/> 
                                 :   null
                             }<br/><br/>
-                            <Row>
-                                <Col md="4">
-                                    <p>rob.martin.dev@gmail.com</p><br/>
-                                </Col>
-                                <Col md="4" style={{ textAlign:"center" }}>
-                                    <a href="http://www.rob-dev.com">My Portfolio Site</a>
-                                </Col>
-                                <Col md="4" style={{ textAlign:"right" }}>
-                                    <a href="https://www.linkedin.com/in/robert-martin-developer/" className="fa fa-linkedin" id="linkedin" target='_blank'> </a>
-                                    <a href="https://www.github.com/bnoxb" className="fa fa-github" id="github" target='_blank' rel='noopener noreferrer'> </a>    
-                                </Col>
-                            </Row>
                         </Container>
                     </Row>
-                    <Container>
-                        <Row>
-                            <Col md="12">
-                                <div className="about-divider"></div><br/><br/><br/>
-                            </Col>
-                        </Row>
-                    </Container>
                 </Container>
             </div>
         )

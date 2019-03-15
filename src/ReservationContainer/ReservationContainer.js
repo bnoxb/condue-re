@@ -185,7 +185,6 @@ class ReservationContainer extends Component {
                     }
                     </div>
                 </div>
-                <div className="sub-content-res"></div>
             </div>
         )
     }
