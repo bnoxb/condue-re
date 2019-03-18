@@ -11,7 +11,7 @@ class PatioCard extends Component {
             day: '',
         }
     }
-    // render function
+    // render function to render
     render(){
         const date = new Date(this.props.weather.time *1000);
         const day = date.toLocaleDateString('en-US', {

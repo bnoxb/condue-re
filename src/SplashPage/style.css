@@ -7,6 +7,10 @@
     height: 1000px;
 }
 
+.splash{
+    height: auto;
+}
+
 .splash-content {
     height: 50%;
     font-size: 36px;
@@ -41,6 +45,10 @@
     height: auto;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
     clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 100%) !important;
+}
+
+#info.sub-content{
+    height: 1000px;
 }
 
 .splash-span{

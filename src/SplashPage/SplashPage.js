@@ -14,7 +14,7 @@ import Stromtrooper from '../images/stormtrooper-bartender.png';
 
 const SplashPage = () => {
     return(
-        <div>
+        <div className="splash">
             <div className="parallax">
                 <div className="splash-content">
                     <Container>
@@ -41,7 +41,7 @@ const SplashPage = () => {
                 </div>
                 <div className="sub-content">
                     <Row>
-                        <Col sm="12" className='sub-content'>
+                        <Col sm="12" className='sub-content' id="info">
                         <Container>
                         <Row>
                             <Col sm="3" md="1"></Col>
