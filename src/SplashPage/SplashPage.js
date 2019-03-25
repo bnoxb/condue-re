@@ -32,8 +32,6 @@ const SplashPage = () => {
                                 <div className="splash-brunch">
                                     <p> Come visit us in the morning on weekends, for <span className="span-brunch">Brunch</span></p><br/><br/>
                                 </div>
-
-                              
                             </Col>
                             <Col sm="3" md="2"></Col>
                         </Row>
@@ -41,12 +39,12 @@ const SplashPage = () => {
                 </div>
                 <div className="sub-content">
                     <Row>
-                        <Col sm="12" className='sub-content' id="info">
+                        {/* <Col sm="12" className='sub-content' id="info"> */}
                         <Container>
                         <Row>
                             <Col sm="3" md="1"></Col>
                             <Col xs="12" sm="6" md="10" className="sub-header">
-                                Heres some more reasons why we're the best!
+                                Here's some more reasons why we're the best!
                                 <div className="divider"></div>
                             </Col>
                             <Col sm="3" md="1"></Col>
@@ -104,7 +102,7 @@ const SplashPage = () => {
                                 </Col>
                            </Row>
                         </Container>
-                        </Col>
+                        {/* </Col> */}
                     </Row>
                 </div>
             </div>

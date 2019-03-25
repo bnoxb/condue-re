@@ -117,7 +117,7 @@ class CalendarCreate extends Component {
         let day = startDate;
         let formattedDate = "";
 
-        while (day <= endDate) {
+        while (rows.length < 4) {
             let oldWeekCounter = 0;
             for(let i = 0; i < 7; i++){
                 formattedDate = dateFns.format(day, dateFormat);

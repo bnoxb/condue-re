@@ -134,12 +134,12 @@ class ReservationContainer extends Component {
         return(
             <div>
                 <div className="parallaxRes">
-                    <div className="splash-content">
+                    <div className="res-content">
                     {/* CHANGE THIS BACK TO this.props.logged AFTER TESTING */}
                     {this.props.logged ?
                         <AdminResContainer reses={this.state.reses} getRes={this.getRes}/> :
                             <div>
-                                <Container>
+                                <Container className="res-headers">
                                     <Row>
                                         <Col md="12" style={{textAlign:"center", marginTop:"3rem", marginBottom:"2rem"}}>
                                             <h1>Reservations</h1>
@@ -160,7 +160,7 @@ class ReservationContainer extends Component {
                                     </Row>
                                 </Container>
                                 <Container>
-                                    <Row className="splash-row">
+                                    <Row className="res-row">
                                         <Col sm="3" md="2"></Col>
                                         <Col xs="12" sm="6" md="8">
                                         <br/><br/>          

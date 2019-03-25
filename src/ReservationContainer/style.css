@@ -7,6 +7,12 @@
     height: 50%;
 }
 
+.res-content {
+    height: 100%;
+    font-size: 36px;
+    color: white;
+}
+
 .sub-content-res {
     background: black;
     color: white;
@@ -20,4 +26,14 @@
 
 .res-btn-contain{
     text-align: center;
+}
+
+.res-headers {
+    text-align: center;
+    height: 450px;
+}
+
+.res-row {
+    text-align: center;
+    padding-bottom: 4rem !important;
 }

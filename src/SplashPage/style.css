@@ -4,11 +4,11 @@
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-    height: 1000px;
+    height: auto;
 }
 
 .splash{
-    height: auto;
+    height: 100%;
 }
 
 .splash-content {
@@ -42,7 +42,7 @@
 .sub-content{
     background: black;
     color: white;
-    height: auto;
+    height: 100%;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
     clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 100%) !important;
 }
