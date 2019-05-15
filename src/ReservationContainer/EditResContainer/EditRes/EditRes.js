@@ -25,8 +25,6 @@ class EditRes extends Component {
     }
 
     showModal = () => {
-        console.log('this is res in side EDit Res');
-
         this.setState({
             showModal: !this.state.showModal,
         })
@@ -61,7 +59,7 @@ class EditRes extends Component {
             "month" : "2-digit",
             "day" : "2-digit"
         })
-        console.log(testDate);
+        // test date
         const jsonD = date.toJSON();
         let date2;
         let dateFinal;
@@ -73,6 +71,7 @@ class EditRes extends Component {
             date2 = "there is no date";
         }
         return(
+            
             <div>
                 <Button color="danger" onClick={this.showModal}>Edit</Button>
                 <Button color="danger" onClick={this.handleDelete}>Delete</Button>
